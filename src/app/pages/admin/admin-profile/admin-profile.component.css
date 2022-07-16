@@ -1,0 +1,14 @@
+.ex{
+    width: 70%;
+  
+}
+.r{
+    margin-top: 10px;
+}
+.size{
+    font-size: large;
+}
+.l{
+    height: 30%;
+    background: linear-gradient(90deg, rgba(0,0,36,0.9023984593837535) 0%, rgba(9,9,14,1) 0%, rgba(2,132,170,1) 45%, rgba(0,212,255,1) 99%, rgba(105,93,93,1) 100%);
+}

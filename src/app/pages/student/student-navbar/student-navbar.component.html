@@ -1,0 +1,57 @@
+
+<mat-toolbar color="primary">
+    
+    <button mat-icon-button  [matMenuTriggerFor]="men" aria-label="Example icon-button with a menu">
+       <mat-icon>menu</mat-icon>
+      </button>  <span>E-Learning</span>
+      <mat-menu #men="matMenu">
+        <button routerLink="/student/" mat-menu-item >
+            <mat-icon mat-menu-icon>home</mat-icon>
+            <span style="font-size: 15px;">Home</span>
+          </button>
+          <button mat-menu-item routerLink="/view-profile/student">
+            <mat-icon mat-menu-icon  > account_circle</mat-icon>
+            <span style="font-size: 15px;">Profile</span>
+          </button>
+        <button mat-menu-item routerLink="/student/">
+          <mat-icon mat-menu-icon>menu_book</mat-icon>
+          <span style="font-size: 15px;">Courses &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </button>
+        
+          <button mat-menu-item routerLink="/view-quizes/student">
+            <mat-icon mat-menu-icon>menu_book</mat-icon>
+            <span style="font-size: 15px;">Quizs</span>
+          </button>
+
+          
+
+
+
+      </mat-menu>
+  
+    <span class="example-spacer"></span>
+    
+    
+ 
+    <button mat-icon-button style="margin-right: 150px;" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        {{getdata.username}}<mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/edit-profile/student">
+          <i class="fa fa-pencil-square-o" style="font-size: 15px;" mat-menu-icon></i>
+          <span style="font-size: 15px;">&nbsp;&nbsp;Edit Profile</span>
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <i class="fa fa-sign-out" style="font-size: 15px;" mat-menu-icon></i>
+          <span style="font-size: 15px;">&nbsp;&nbsp;Logout</span>
+        </button>
+        
+      </mat-menu>
+ 
+ 
+ 
+   </mat-toolbar>
+
+   <router-outlet></router-outlet>

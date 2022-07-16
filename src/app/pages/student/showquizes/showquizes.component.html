@@ -1,0 +1,50 @@
+<app-student-navbar></app-student-navbar>
+
+
+<div class="bootstrap-wrapper l">
+    <div class="container">
+        <div >
+          <br><br><br>
+          <h1 style="color: white;margin: top 30px;">Quizes of {{cname}}</h1>
+        </div>
+
+        <div style="text-align: center;">
+           
+        </div>
+     
+    </div>
+   
+</div>
+
+<br>
+<mat-divider></mat-divider>
+<br>
+
+<div class="bootstrap-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4" *ngFor="let q of quizes">
+               <mat-card>
+                   <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                       <mat-card-title>{{q.title}}</mat-card-title>
+                       <mat-card-subtitle>Course name:{{cname}}</mat-card-subtitle>
+                   </mat-card-header>
+                   <mat-card-content>
+                       <p class="tru">{{q.description}}</p>
+                       <button mat-button color="primary">Questions: {{q.numberofQuestions}}</button>
+                   </mat-card-content>
+                   <mat-card-actions>
+                    <button mat-raised-button color="accent" [routerLink]="'/view-results/'+q.qId" >View Results</button>
+                   
+                      
+                       <button mat-button color="primary">M.M: {{q.maxMarks}}</button>
+                      
+                     
+                   </mat-card-actions>
+
+               </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+
+
+<div class="bootstrap-wrapper l">
+    <div class="container">
+        <div >
+          <br><br><br>
+          <h1 style="color: white;margin: top 30px;">Update Quiz</h1>
+        </div>
+
+       
+     
+    </div>
+   
+</div>
+
+<br>
+<mat-divider></mat-divider>
+<br>
+
+<mat-card>
+    <mat-card-title style="text-align: center;">Update Quiz</mat-card-title>
+    <div class="bootstrap-wrapper">
+        <div class="container">
+            <div class="container text-center">
+
+    <form (ngSubmit)="k()">
+        <mat-form-field class="ex"  appearance="fill">
+                
+            <mat-label class="size"><mat-icon>menu_book</mat-icon>&nbsp;Quiz title</mat-label>
+            <input type="text" matInput placeholder="Enter course name...." [(ngModel)]="get.title" name="title" required>
+            
+           </mat-form-field>
+           
+          <mat-form-field class="ex" appearance="fill">
+            <mat-label>Enter the Description</mat-label>
+            <textarea matInput  [(ngModel)]="get.description" name="description" rows="5"></textarea>
+          </mat-form-field>
+
+          
+      
+          <div class="row">
+              <div class="col-md-6">
+                <mat-form-field class="ex"  appearance="fill">
+                    <mat-label class="size">No Of Questions</mat-label>
+                    <input type="text" matInput placeholder="Enter no of questions...." [(ngModel)]="get.numberofQuestions" name="numberofQuestions" required>
+                   </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field class="ex"  appearance="fill">
+                    <mat-label class="size">Max Marks</mat-label>
+                    <input type="text" matInput placeholder="Enter Max marks...." [(ngModel)]="get.maxMarks" name="maxMarks" required>
+                   </mat-form-field>
+              </div>
+          </div>
+
+         
+          <mat-form-field class="ex" appearance="fill">    
+            <mat-label class="size">Select Course</mat-label>
+            <mat-select name="courses" [(ngModel)]="get.courses" required>
+
+                <mat-option *ngFor="let k of getdata" [value]="k">{{k.cname}}
+
+                </mat-option>
+
+            </mat-select>
+        </mat-form-field>
+        <mat-slide-toggle style="float: left;" name="active" [(ngModel)]="get.active" >Publish Status</mat-slide-toggle>
+           <mat-card-actions>
+            <button mat-raised-button color="primary">Add</button>
+            <button mat-raised-button color="warn">Cancle</button>
+          </mat-card-actions>
+    </form>
+    </div>
+    </div>
+    </div>
+</mat-card>
+

@@ -1,0 +1,19 @@
+.l{
+    height: 30%;
+    background: linear-gradient(90deg, rgba(0,0,36,0.9023984593837535) 0%, rgba(9,9,14,1) 0%, rgba(2,132,170,1) 45%, rgba(0,212,255,1) 99%, rgba(105,93,93,1) 100%);
+}
+.profile-image
+{
+    max-width: 150px;
+    max-height: 150px;
+    border: 2px solid black;
+    border-radius: 50%;
+}
+
+.ex{
+    width: 100%;
+}
+
+.h{
+    text-transform: uppercase;
+}

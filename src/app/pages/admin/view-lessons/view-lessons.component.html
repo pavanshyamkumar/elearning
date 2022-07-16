@@ -1,0 +1,237 @@
+
+<div class="bootstrap-wrapper l">
+    <div class="container">
+        <div >
+          <br><br><br>
+          <h1 style="color: white;margin: top 30px;">E-Learning</h1>
+        </div>
+        <div style="text-align: center;">
+            <button mat-raised-button color="warn" (click)="change()" >Add Module</button>&nbsp;&nbsp;&nbsp;
+            <button mat-raised-button   (click)="contentchange()" color="warn" >Add Content</button>
+        </div>
+    </div>
+   
+</div>
+<br>
+
+
+<button routerLink="/admin/view-courses" mat-button><mat-icon>arrow_back_ios</mat-icon>Back</button>
+<mat-divider></mat-divider>
+<br>
+<!--view lessions on side bar-->
+
+          <div class="bootstrap-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+                        <mat-form-field class="example-full-width" >
+                            <mat-label><mat-icon style="font-size: 15px;">search</mat-icon> Search</mat-label>
+                            <input matInput type="text" name="term"  [(ngModel)]="term"  placeholder="Search module name" >
+                          </mat-form-field>
+                        <mat-card>
+                            <mat-action-list>
+                                  <div mat-subheader>
+                                     Modules &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                         <button style="float: right;" (click)="reloadCurrentRoute()" mat-icon-button>
+                                         refresh <mat-icon>refresh</mat-icon></button>
+                                         </div>
+                                    <div *ngFor="let c of getdata | filter : term">
+                                        <div>
+                                            <h2 mat-list-item><button mat-button (click)="contentview(c.lid)" (click)="contentch()">{{c.lname}}</button> 
+                                                <button mat-icon-button style="float:right" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                                                    <mat-icon>more_vert</mat-icon>
+                                                   </button>
+                                                   <mat-menu #menu="matMenu">
+                                                   
+                                                     <button mat-menu-item (click)="edit(c.lid)">
+                                                       <span style="font-size: 15px;">Edit</span>
+                                                     </button>
+                                                     <button mat-menu-item (click)="dell(c.lid)">
+                                                       
+                                                       <span style="font-size: 15px;">Delete</span>
+                                                     </button>
+                                                     
+                                                   </mat-menu></h2> 
+                                         </div>
+                                                    
+                                    </div>
+                            </mat-action-list>
+                        
+                         </mat-card>    
+                    </div>
+
+<!--add lession-->
+
+
+
+                    <div class="col-md-9" >
+                        <div *ngIf="!f">
+                            <mat-card>
+                                <mat-card-title>Add Module</mat-card-title>
+                                <br><br>
+                                <form (ngSubmit)="formSubmit()">
+                                    <mat-form-field class="ex">    
+                                        <mat-label class="size"><mat-icon>menu_book</mat-icon>&nbsp;Course name</mat-label>
+                                        <input type="text" matInput placeholder="Enter course name...." [(ngModel)]="get.lname" name="lname" required>
+                                       </mat-form-field>
+                                     
+                                       <mat-card-actions>
+                                        <button mat-raised-button color="primary">Add</button>
+                                        <button mat-raised-button (click)="same()" color="warn">Cancle</button>
+                                      </mat-card-actions>
+                                </form>
+                            </mat-card>
+                        </div>
+                       
+
+                        <!--add content-->
+  
+                        <div  *ngIf="!c">
+                            <mat-card>
+                                <mat-card-title>Add Content</mat-card-title>
+                                <br><br>
+                                <form (ngSubmit)="addcontentt()">
+                                    <mat-form-field class="ex" appearance="outline">    
+                                        <mat-label class="size"><mat-icon>menu_book</mat-icon>&nbsp;Name</mat-label>
+                                        <input type="text" matInput placeholder="Enter course name...." [(ngModel)]="addcontent.name" name="name" required>
+                                    </mat-form-field>
+                                    <mat-form-field class="ex" appearance="fill">    
+                                        <mat-label class="size">Select Modules</mat-label>
+                                        <mat-select name="lessons" [(ngModel)]="addcontent.lessons">
+
+                                            <mat-option *ngFor="let k of getdata" [value]="k">{{k.lname}}
+
+                                            </mat-option>
+
+                                        </mat-select>
+                                    </mat-form-field>
+                                    
+                                    <mat-form-field class="ex" appearance="outline">    
+                                        <mat-label class="size"><mat-icon>link</mat-icon>&nbsp;Download Link</mat-label>
+                                        <textarea rows="10"  matInput placeholder="Enter download Link...." [(ngModel)]="addcontent.downloadlink" name="downloadlink" required></textarea>
+                                    </mat-form-field>
+                                    <mat-form-field class="ex" appearance="outline">    
+                                        <mat-label class="size"><mat-icon>link</mat-icon>&nbsp;Video Link</mat-label>
+                                        <textarea rows="10" matInput placeholder="Enter Video Link...." [(ngModel)]="addcontent.videolink" name="videolink" required></textarea>
+                                    </mat-form-field>
+                                     
+                                       <mat-card-actions>
+                                        <button mat-raised-button color="primary">Add</button>
+                                        <button mat-raised-button  color="warn" (click)="same()">Cancle</button>
+                                      </mat-card-actions>
+                                </form>
+                            </mat-card>
+                        </div>
+
+  
+                        
+
+
+
+                        <!--update lesson-->
+
+                        <div *ngIf="!d">
+                            <mat-card>
+                                <mat-card-title>Edit Module</mat-card-title>
+                                <br><br>
+                                <form (ngSubmit)="editSubmit()">
+                                    <mat-form-field class="ex">    
+                                        <mat-label class="size"><mat-icon>menu_book</mat-icon>&nbsp;Course name</mat-label>
+                                        <input type="text" matInput placeholder="Enter course name...." [(ngModel)]="dataa.lname" name="lname" required>
+                                       </mat-form-field>
+                                     
+                                       <mat-card-actions>
+                                        <button mat-raised-button color="primary">edit</button>
+                                        <button mat-raised-button color="warn" (click)="same()">Cancle</button>
+                                      </mat-card-actions>
+                                </form>
+                            </mat-card>
+                        </div>
+
+
+
+
+                        <!--update content-->
+
+
+
+
+                        <!--view content-->
+                        <div *ngIf="!cont">
+                          <h3>Contents</h3>
+                          <div *ngFor="let f of content">
+                            <mat-accordion class="example-headers-align" multi>
+                              <mat-expansion-panel >
+                                <mat-expansion-panel-header>
+                                  <mat-panel-title>
+                                    {{f.name}} 
+                                  </mat-panel-title>
+                                  <mat-panel-description>
+                                    click to show
+                                   
+                                   
+                                  </mat-panel-description>
+                                </mat-expansion-panel-header>
+                               
+                               <h4>Downloadlink: <a href="{{f.downloadlink}}" target="_blank">{{f.downloadlink}}</a> </h4>    
+                               <h4>Videolink: <a href="{{f.videolink}}" target="_blank">{{f.videolink}}</a> </h4> 
+                               
+                               <div>
+                                   <button mat-raised-button color="primary" (click)="changedatatwo()" (click)="getcontentbyid(f.conid)">Edit</button>&nbsp;&nbsp;
+                                   <button mat-raised-button color="warn" (click)="deletecontent(f.conid)">Delete</button>
+                               </div>
+                              
+                              </mat-expansion-panel>
+                            </mat-accordion>
+                          </div>
+                        </div>
+
+                        <!--edit content-->
+                       
+                        <div  *ngIf="!condataaa">
+                          <mat-card>
+                              <mat-card-title>Edit Content</mat-card-title>
+                              <br><br>
+                              <form (ngSubmit)="editcontentt()">
+                                  <mat-form-field class="ex" appearance="outline">    
+                                      <mat-label class="size"><mat-icon>menu_book</mat-icon>&nbsp;Name</mat-label>
+                                      <input type="text" matInput placeholder="Enter course name...." [(ngModel)]="condataa.name" name="name" required>
+                                  </mat-form-field>
+                                  <mat-form-field class="ex" appearance="fill">    
+                                      <mat-label class="size">Select Modules</mat-label>
+                                      <mat-select name="lessons" [(ngModel)]="condataa.lessons">
+
+                                          <mat-option *ngFor="let k of getdata" [value]="k">{{k.lname}}
+
+                                          </mat-option>
+
+                                      </mat-select>
+                                  </mat-form-field>
+                                  
+                                  <mat-form-field class="ex" appearance="outline">    
+                                      <mat-label class="size"><mat-icon>link</mat-icon>&nbsp;Download Link</mat-label>
+                                      <textarea rows="10"  matInput placeholder="Enter download Link...." [(ngModel)]="condataa.downloadlink" name="downloadlink" required></textarea>
+                                  </mat-form-field>
+                                  <mat-form-field class="ex" appearance="outline">    
+                                      <mat-label class="size"><mat-icon>link</mat-icon>&nbsp;Video Link</mat-label>
+                                      <textarea rows="10" matInput placeholder="Enter Video Link...." [(ngModel)]="condataa.videolink" name="videolink" required></textarea>
+                                  </mat-form-field>
+                                   
+                                     <mat-card-actions>
+                                      <button mat-raised-button color="primary">update</button>
+                                      <button mat-raised-button  color="warn" (click)="same()">Cancle</button>
+                                    </mat-card-actions>
+                              </form>
+                          </mat-card>
+                      </div>
+
+
+                         
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        

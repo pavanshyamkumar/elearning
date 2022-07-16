@@ -1,0 +1,62 @@
+<div class="bootstrap-wrapper l">
+    <div class="container">
+        <div >
+          <br><br><br>
+          <h1 style="color: white;margin: top 30px;">Questions of {{qtitle}}</h1>
+        </div>
+        <div style="text-align: center;">
+            <button mat-raised-button color="warn" [routerLink]="'/admin/add-question/'+qId+'/'+qtitle">Add New Question</button>
+        </div>
+    </div>
+</div>
+<br>
+<mat-divider></mat-divider>
+
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-card *ngFor="let c of questions; let i=index" style="margin-top: 20px;">
+                    <mat-card-content>
+                        <p>
+                           <b>Q{{i+1}})</b><span style="margin-left: 10px;" [innerHtml]="c.content"></span>
+                        </p>
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p><b>1)</b> {{c.option1}}</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><b>2)</b> {{c.option2}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p><b>3)</b> {{c.option3}}</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><b>4)</b> {{c.option4}}</p>
+                                    </div>
+                                </div>
+                                <mat-divider></mat-divider>
+                                <p style="margin-top: 20px;"><b>Correct Answer:</b> {{c.answer}}</p>
+                            </div>
+    
+    
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-button color="accent" [routerLink]="'/admin/update-question/'+c.quesId">Update</button>
+                        <button mat-button style="margin-left: 10px;" (click)="del(c.quesId)" color="warn">Delete</button>
+
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+
+
+

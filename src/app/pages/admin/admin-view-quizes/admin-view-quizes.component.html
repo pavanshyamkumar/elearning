@@ -1,0 +1,58 @@
+
+
+<div class="bootstrap-wrapper l">
+    <div class="container">
+        <div >
+          <br><br><br>
+          <h1 style="color: white;margin: top 30px;">Total Quizes</h1>
+        </div>
+
+        <div style="text-align: center;">
+            <button mat-raised-button color="warn" routerLink="/admin/add-quiz">Add New Quiz</button>
+        </div>
+     
+    </div>
+   
+</div>
+
+<br>
+<mat-divider></mat-divider>
+<br>
+
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4" *ngFor="let c of getdata">
+                <mat-card class="example-card">
+                    <mat-card-header>
+                        
+                      <div mat-card-avatar class="example-header-image"></div>
+                      <mat-card-title>{{c.title}}
+                        <button mat-icon-button [routerLink]="'/admin/update-quiz/'+c.qId"><mat-icon>edit</mat-icon></button>
+                        <button mat-icon-button color="warn" (click)="delete(c.qId)"><mat-icon>delete</mat-icon></button>
+                        
+                      </mat-card-title>
+                     
+                      <mat-card-subtitle>{{c.courses.cname}} <br>
+                         By:{{c.courses.professors.name}}
+                      </mat-card-subtitle>
+                    </mat-card-header>
+                   <mat-card-content>
+                      {{c.description}}
+                       <h3><b>max-marks:{{c.maxMarks}}</b> <button *ngIf="c.active" style="margin-left:15px; color:green"  mat-button>Activated</button>
+                        <button *ngIf="!c.active" style="margin-left:15px;" color="warn"  mat-button>Deactivated</button></h3> 
+                   </mat-card-content>
+                  <mat-card-actions>
+                      <button mat-flat-button [routerLink]="'/admin/questions/'+c.qId+'/'+c.title" color="accent">Questions</button>
+                     
+                      <button mat-flat-button color="primary" style="margin-left: 10px;">No of Question:{{c.numberofQuestions}}</button>
+                  </mat-card-actions>
+                   
+                  </mat-card>
+                  <br>
+            </div>
+           
+        </div>
+    </div>
+</div>
+<br>

@@ -1,0 +1,108 @@
+<div class="bootstrap-wrapper l">
+    <div class="container">
+        <div >
+          <br><br><br>
+          <h1 style="color: white;margin: top 30px;">View Professor Profile</h1>
+        </div>
+
+       
+     
+    </div>
+   
+</div>
+
+<mat-divider></mat-divider>
+
+
+<mat-card class="kk">
+    <h1 style="text-align: center;">Profile</h1>
+ 
+    <mat-card-content>
+        <div class="bootstrap-wrapper">
+            <div class="container">
+                <div class="container text-center">
+                    
+                    <img src="../../../../assets/doctor.png" class="profile-image" alt="">
+                <h1 class="mt-20 h"><b>{{getdata.name}}</b></h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 offset-3">
+                        <mat-list role="list" *ngIf="f">
+                            
+                           <label for="">Email  <button style="float: right;" (click)="change()" mat-icon-button>
+                            <mat-icon>edit</mat-icon></button></label>
+                            <h3> {{getdata.email}} </h3>
+                            <mat-divider></mat-divider>
+                           <label for="">Name</label>
+                           <h3 class="h">{{getdata.name}}</h3>
+                            <mat-divider></mat-divider>
+                            <label for="">Phone Number</label>
+                            <h3 >{{getdata.phonenumber}}</h3>
+                            <mat-divider></mat-divider>
+                           <label for="">Qualification</label>
+                           <h3 >{{getdata.qualification}}</h3>
+                            <mat-divider></mat-divider>
+                           <label for="">Degree</label>
+                           <h3>{{getdata.degree}}</h3>
+                            <mat-divider></mat-divider>
+                             <label for="">Collage</label>
+                           <h3>{{getdata.college}}</h3>
+                            <mat-divider></mat-divider>
+                          </mat-list>
+
+
+
+                          <form (ngSubmit)="formSubmit()" *ngIf="!f">
+                            <mat-form-field class="ex">
+                                    
+                                <mat-label class="size"><mat-icon>person</mat-icon>&nbsp;Email</mat-label>
+                                <input type="text" matInput placeholder="Enter email...." [(ngModel)]="updatedata.email" name="email" required>
+                                
+                               </mat-form-field>
+                              
+                               <mat-form-field class="ex">
+                                    
+                                <mat-label class="size"><mat-icon>emoji_emotions</mat-icon>&nbsp;Name</mat-label>
+                                <input type="text" matInput placeholder="Enter firstname...." [(ngModel)]="updatedata.name" name="name" required>
+                                
+                               </mat-form-field>
+                               <mat-form-field class="ex">
+                                    
+                                <mat-label class="size"><mat-icon>phone</mat-icon>&nbsp;Phone Number</mat-label>
+                                <input type="text" matInput placeholder="Enter Phone number...." [(ngModel)]="updatedata.phonenumber" name="phonenumber" required>
+                                
+                               </mat-form-field>
+                               
+                               <mat-form-field class="ex">
+                                    
+                                <mat-label class="size"><mat-icon>badge</mat-icon>&nbsp;Position</mat-label>
+                                <input type="text" matInput placeholder="Enter positon...." [(ngModel)]="updatedata.qualification" name="qualification" required>
+                                
+                               </mat-form-field>
+                               <mat-form-field class="ex">
+                                    
+                                <mat-label class="size"><mat-icon>assignment_ind</mat-icon>&nbsp;Degree</mat-label>
+                                <input type="text" matInput placeholder="Enter Degree...." [(ngModel)]="updatedata.degree" name="degree" required>
+                                
+                               </mat-form-field>
+                               <mat-form-field class="ex">
+                                    
+                                <mat-label class="size"><mat-icon>apartment</mat-icon>&nbsp;Collage</mat-label>
+                                <input type="text" matInput placeholder="Enter collage...." [(ngModel)]="updatedata.college" name="college" required>
+                                
+                               </mat-form-field>
+                               <mat-card-actions>
+                                <button mat-raised-button color="primary">Update</button>
+                                <button mat-raised-button color="warn" (click)="same()">Cancle</button>
+                              </mat-card-actions>
+                        </form>
+                          
+                          
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+   
+</mat-card>

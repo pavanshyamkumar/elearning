@@ -1,0 +1,33 @@
+<div class="bootstrap-wrapper l">
+    <div class="container">
+        <div>
+            <br><br><br>
+            <h1 style="color: white;margin: top 30px;">Update Course</h1>
+        </div>
+    </div>
+</div>
+<br>
+<mat-divider></mat-divider>
+<br>
+<div class="text-center">
+    <form (ngSubmit)="formSubmit()" >
+        <mat-form-field class="ex">
+                
+            <mat-label class="size"><mat-icon>menu_book</mat-icon>&nbsp;Course Name</mat-label>
+            <input type="text" matInput placeholder="Enter email...." [(ngModel)]="getdata.cname" name="cname" required>
+            
+           </mat-form-field>
+          
+           <mat-form-field class="ex">
+                
+            <mat-label class="size"><mat-icon>description</mat-icon>&nbsp;Description</mat-label>
+            <input type="text" matInput placeholder="Enter firstname...." [(ngModel)]="getdata.description" name="description" required>
+            
+           </mat-form-field>
+          <br>
+           <mat-card-actions>
+            <button mat-raised-button color="primary">Update</button>&nbsp;&nbsp;
+            <button mat-raised-button color="warn" >Cancle</button>
+          </mat-card-actions>
+    </form>
+</div>

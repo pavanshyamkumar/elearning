@@ -1,0 +1,50 @@
+
+
+<div class="bootstrap-wrapper l">
+    <div class="container">
+        <div >
+          <br><br><br>
+          <h1 style="color: white;margin: top 30px;">Total Courses</h1>
+        </div>
+
+        <div style="text-align: center;">
+            <button mat-raised-button color="warn" routerLink="/admin/add-course">Add Course</button>
+        </div>
+     
+    </div>
+   
+</div>
+
+<br>
+<mat-divider></mat-divider>
+<br>
+
+
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4" *ngFor="let c of getdata">
+                <mat-card class="example-card">
+                    <mat-card-header>
+                      <div mat-card-avatar class="example-header-image"></div>
+                      <mat-card-title>{{c.cname}}</mat-card-title>
+                      <mat-card-subtitle>{{c.description}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <img mat-card-image src="../../../../assets/Course.png" height="250px" alt="Photo of a Shiba Inu">
+                    <mat-card-content>
+                      <h3 style="text-align: right;">by:- <button [routerLink]="'/admin/view-profile/'+c.professors.proid" mat-button>{{c.professors.name}}</button> </h3>
+                    </mat-card-content>
+                    <mat-card-actions>
+                      <button [routerLink]="'/admin/lessons/'+c.cid" mat-button>View</button>
+                      <button [routerLink]="'/admin/update-course/'+c.cid" mat-button>Update</button>
+                      <button mat-button (click)="delete(c.cid)">Delete</button>
+                      <button mat-button routerLink="/admin/studentsresults">Results</button>
+                    </mat-card-actions>
+                  </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+
+
+<div class="bootstrap-wrapper h">
+    <div class="container">
+      <div class="row" >
+     
+        <div class="col-md-6 offset-md-3 ">
+            <mat-card class="login">
+              <mat-progress-bar *ngIf="k" mode="indeterminate"></mat-progress-bar>
+                <h2 class="text-center" style=" font-size: 30px; margin-top: 10px;"><b>Login</b></h2><br><br>
+                <form (ngSubmit)="formSubmit()">
+                    <h3>Email Id</h3>
+                    <mat-form-field appearance="outline" class="size">
+                        <input matInput [(ngModel)]="logindata.username" name="username" placeholder="Enter Your EmailId....." required>
+                        <mat-icon matSuffix>email</mat-icon>
+                      </mat-form-field><br>
+                      <h3>Password</h3>
+                      <mat-form-field appearance="outline" class="size">
+                        <input matInput [(ngModel)]="logindata.password" name="password" [type]="hide ? 'password' : 'text'" placeholder="Enter Your Password....." required>
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                      </mat-form-field>
+                      <div class="text-center">
+                            <button mat-raised-button type="submit" color="primary" >&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;</button>
+                            <p>Not a Member??&nbsp;&nbsp; <a routerLink="/signup">Register</a></p>
+                      </div>
+                </form>
+            </mat-card>
+
+        </div>
+

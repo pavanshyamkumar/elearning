@@ -1,0 +1,59 @@
+
+<div class="bootstrap-wrapper l">
+    <div class="container">
+        <div >
+          <br><br><br>
+          <h1 style="color: white;margin: top 30px;">Add Course</h1>
+        </div>
+     
+    </div>
+   
+</div>
+<br>
+<br>
+
+<button routerLink="/admin/view-courses" mat-button><mat-icon>arrow_back_ios</mat-icon>Back</button>
+<mat-divider></mat-divider>
+
+<mat-card>
+    <mat-card-title style="text-align: center;">Add Course</mat-card-title>
+    <div class="bootstrap-wrapper">
+        <div class="container">
+            <div class="container text-center">
+
+    <form (ngSubmit)="formSubmit()">
+        <mat-form-field class="ex">
+                
+            <mat-label class="size"><mat-icon>menu_book</mat-icon>&nbsp;Course name</mat-label>
+            <input type="text" matInput placeholder="Enter course name...." [(ngModel)]="get.cname" name="cname" required>
+            
+           </mat-form-field>
+           <mat-form-field class="ex" appearance="fill">    
+            <mat-label class="size">Select Professor</mat-label>
+            <mat-select name="professors" [(ngModel)]="get.professors">
+
+                <mat-option *ngFor="let k of getdata" [value]="k">{{k.name}}
+
+                </mat-option>
+
+            </mat-select>
+        </mat-form-field>
+      
+           <mat-form-field class="ex">
+                
+            <mat-label class="size"><mat-icon>description</mat-icon>&nbsp;Description</mat-label>
+            <input type="text" matInput placeholder="Enter description...." [(ngModel)]="get.description" name="description" required>
+            
+           </mat-form-field>
+           <mat-card-actions>
+            <button mat-raised-button color="primary">Add</button>
+            <button mat-raised-button color="warn" [mat-dialog-close]>Cancle</button>
+          </mat-card-actions>
+    </form>
+    </div>
+    </div>
+    </div>
+</mat-card>
+
+
+

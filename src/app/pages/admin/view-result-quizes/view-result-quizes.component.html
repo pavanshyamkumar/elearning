@@ -1,0 +1,44 @@
+
+<mat-form-field appearance="fill">
+    <mat-label>Favorite food</mat-label>
+    <mat-select [(value)]="selected">
+      <mat-option  *ngFor="let c of getdata" [value]="c.qId">
+        {{c.title}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  &nbsp;&nbsp;<button mat-raised-button color="primary" (click)="search()">Srearch</button>
+
+  <div class="bootstrap-wrapper">
+    <div class="container">
+        <mat-card style="margin-top: 20px;" *ngFor="let r of getresults let i=index">
+          <mat-card-header  >
+              <mat-card-title>
+               Attempt-{{i+1}}: Result Of {{r.quiz.title}}
+              </mat-card-title>
+              <mat-card-subtitle>Couse Name: {{r.quiz.courses.cname}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-divider></mat-divider>
+        <br>
+          <div class="row">
+              <div class="col-md-4"><h2 style="text-align:center;">Total Questions</h2>
+            <mat-divider></mat-divider><h3 style="text-align:center;">{{r.quiz.numberofQuestions}}</h3></div>
+              <div class="col-md-4"><h2 style="text-align:center;">Attempted Questions</h2>
+            <mat-divider></mat-divider><h3 style="text-align:center;">{{r.attempted}}</h3></div>
+              <div class="col-md-4"><h2 style="text-align:center;">Total Marks</h2>
+            <mat-divider></mat-divider><h3 style="text-align:center;">{{r.marksgot}}/{{r.quiz.maxMarks}}</h3></div>
+          </div>
+          <mat-divider></mat-divider>
+          <br>
+          <div class="text-center">
+              <h3> <b> Total Percentage :{{r.persentage}}</b></h3>
+          </div>
+
+          <mat-card-actions class="text-center">
+          
+          
+          </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
