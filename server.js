@@ -1,7 +1,8 @@
-const express =require('express');
-const path=require('path');
-const app=express();
-app.use(express.static('./dist/elearning'));
-app.get('/*',(req,res)=>res.sendFile('index.html',{root:'dist/elearning'}),
-);
+const express = require('express');
+const path = require('path');
+const app = express();
+app.use(express.static(__dirname + '/dist/elearning'));
+app.get('/*', function(req,res) {
+res.sendFile(path.join(__dirname+
+'/dist/elearning/index.html'));});
 app.listen(process.env.PORT || 8080);
